@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Design Hipermedia</h1>
+    <details>
+        <summary>Details</summary>
+        <h1>What is hipermedia design?</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam aliquid rem tempora atque cupiditate officiis animi odio quaerat voluptatem doloremque id voluptate beatae consequatur sit sint, quibusdam explicabo eligendi dolorum!</p>
+    </details>
+    <style>
+        :root{
+            color-scheme:light dark;
+        }
+        body{
+            font-family:Arial, sans-serif;
+            color:light-dark(pink,blue);
+            background-color:light-dark(gray);
+        }
+        .anchor-button {
+            anchor-name: --inbox-button;
+        }
+        .anchor-badge {
+            position: absolute;
+            top: anchor(--inbox-button top);
+            left: anchor(--inbox-button right);
+            translate: -50% -50%;
+        }
+    </style>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="info-fill" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-
+            .088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-
+            .081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+    </svg>
+    <div class="alert-primary" role="alert">
+        <svg role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+        <div>
+            Um exemplo de alerta com um ícone 
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary position-relative anchor-button">Inbox 
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger anchor-badge">
+            99+ <span class="visually-hidden">unread messages</span>
+        </span>
+    </button>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data</li>
+        </ol>
+    </nav>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <main>
+        <div class="wrapper">
+            <article class="flow">
+                <button popovertarget="my-popover">Toggle Popover</button>
+            </article>
+        </div>
+    </main>
+    <div popover id="my-popover" class="box flow">
+        <h2>This is a popover</h2>
+        <button popovertarget="my-popover" popovertargetaction="hide">Hide Popover</button>
+    </article>
+    </div>
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link disabled">Disabled</a>
+            </div>
+        </div>
+    </nav>
+    <div class="grid">
+        <details name="tabs" open> 
+            <summary data-tab-order="1">Tab1</summary>
+            <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius molestias repell
+        </details>
+        <details name="tabs"> 
+            <summary data-tab-order="2">Tab2</summary>
+            <div>Voluptatibus quam consectetur fuga dolorem praesentium atque facere nam distinctio 
+        </details>
+        <details name="tabs">
+            <summary data-tab-order="3">Tab3</summary>
+            <div>Sapiente ea nulla, reiciendis non harum sed delectus error laudantium impedit 
+        </details>
+    </div>
+    <style>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+        grid-template-rows: auto 1fr;
+    }
+    details{
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-template-rows: subgrid;
+        grid-column: 1 / -1;
+        grid-row: 1 / span 2;
+        border-bottom: 1px solid lightgray;
+    }
+    summary{
+        --tab-order: attr(data-tab-order type(<integer>));
+        grid-column: var(--tab-order) / span 1;
+        grid-row: 1;
+        display: grid;
+        padding: 1rem;
+        border-bottom: 1px solid lightgray; 
+        cursor: pointer;
+        z-index: 1;
+    }
+    details[open] :is(summary){
+        font-weight: bold;
+        pointer-events: none;
+        border: 1px solid lightgray;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom: none;
+    }
+    details::details-content{
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding: 1rem;
+    }
+    details:not([open])::details-content{
+        display: none;
+    }
+    </style>
+</body>
+</html>
