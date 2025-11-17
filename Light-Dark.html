@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light-Dark</title>
+</head>
+<body>
+    <h1>Design Hipermedia</h1>
+    <style>
+        :root{
+            color-scheme:light dark;
+        }
+        body{
+            font-family:Arial, sans-serif;
+            color:light-dark(pink,blue);
+            background-color:light-dark(gray);
+        }
+        .anchor-button {
+            anchor-name: --inbox-button;
+        }
+        .anchor-badge {
+            position: absolute;
+            top: anchor(--inbox-button top);
+            left: anchor(--inbox-button right);
+            translate: -50% -50%;
+        }
+    </style>
+</body>
+</html>

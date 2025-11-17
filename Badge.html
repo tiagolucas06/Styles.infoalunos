@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge</title>
+</head>
+<body>
+<button type="button" class="btn btn-primary anchor-button">
+  Inbox
+  <span class="anchor-badge badge rounded-pill bg-danger">
+    99+ <span class="visually-hidden">unread messages</span>
+  </span>
+</button>
+<script src="https://unpkg.com/anchor-positioning/dist/anchor-positioning.js"></script>
+<style>
+  .anchor-button {
+    anchor-name: --inbox-button;
+    position: relative;
+  }
+  .anchor-badge {
+    position: absolute;
+    top: anchor(--inbox-button top);
+    left: anchor(--inbox-button right);
+    translate: -50% -50%;
+  }
+</style>
+</body>
+</html>
