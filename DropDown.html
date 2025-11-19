@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DropDown</title>
+</head>
+<body>
+    <nav>
+ <button id="anchor" popoveraction="toggle"popovertarget="target">
+ Toggle Dropdown Menu ▾ 
+ </button>
+ <ul id="target" popover>
+ <li><a href="#">Link 1</a></li>
+ <li><a href="#">Link 2</a></li>
+ <li><a href="#">Link 3</a></li>
+ </ul>
+</nav> 
+<style>
+ ul[popover] {
+ margin: 0;
+ }
+ #anchor {
+ anchor-name: --toggle;
+ }
+ #target {
+ position: absolute;
+ position-anchor: --toggle;
+ position-area: bottom;
+ position-try-fallbacks: top;
+ width: anchor-size(width);
+ }
+</style>
+</body>
+</html>
